@@ -3,8 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 export const publicRoutes = [
   {
     path: '/login',
-    component: () =>
-      import(/* webpackChunkName: "login" */ '@/views/login/index')
+    component: () => import('@/views/login/index')
   }
 ]
 
