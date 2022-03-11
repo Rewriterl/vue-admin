@@ -1,24 +1,10 @@
 # vue-admin
 
-## Project setup
-```
-yarn install
-```
+## 工程化配置
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+- 提交前自动通过eslint格式化并修正项目代码
+- 依照AngularJS Git Commit Message Conventions的规范进行git提交操作
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## 封装图标组件
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+同时支持载入本地图标与Web图标
