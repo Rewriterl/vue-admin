@@ -5,6 +5,18 @@ function resolve (dir) {
 }
 
 module.exports = {
+  devServer: {
+    port: 4000,
+    // 配置反向代理
+    proxy: {
+      // 当地址中有/api的时候会触发代理机制
+      '/api': {
+        // 要代理的服务器地址  这里不用写 api
+        target: 'http://localhost:8080',
+        changeOrigin: true // 是否跨域
+      }
+    }
+  },
   chainWebpack (config) {
     // 设置 svg-sprite-loader
     // config 为 webpack 配置对象

@@ -42,6 +42,8 @@
       <el-button
         type="primary"
         style="width: 100%; margin-bottom: 30px"
+        :loading="loading"
+        @click="handleLogin"
       >登录
       </el-button
       >
@@ -53,7 +55,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { validatePassword } from './rules'
-import {} from '@/components/SvgIcon/index.vue'
+import { useStore } from 'vuex'
 
 // 数据源
 const loginForm = reactive({
@@ -77,7 +79,9 @@ const loginRules = reactive({
     }
   ]
 })
-
+const store = useStore()
+const loading = ref(false)
+const loginFromRef = ref(null)
 // 处理密码框文本显示状态
 const passwordType = ref('password')
 const onChangePwdType = () => {
@@ -86,6 +90,19 @@ const onChangePwdType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+const handleLogin = () => {
+  loginFromRef.value.validate(valid => {
+    if (valid) {
+      loading.value = true
+      store.dispatch('user/login', loginForm).then(() => {
+        loading.value = false
+      }).catch((err) => {
+        console.log(err)
+        loading.value = false
+      })
+    }
+  })
 }
 </script>
 

@@ -5,6 +5,7 @@ import store from './store'
 import installElementPlus from './plugins/element'
 // 导入 svgIcon
 import installIcons from '@/icons'
+import './permission'
 
 import '@/styles/index.scss'
 
